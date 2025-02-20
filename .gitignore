@@ -55,3 +55,10 @@ ignition/deployments/chain-31337
 logs
 *.log
 npm-debug.log*
+
+# Documentation and design files
+uiuxdesign
+vrf2.5.tx
+
+# Mock contracts
+contracts/mocks/VRFCoordinatorV2_5Mock.sol
