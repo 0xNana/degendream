@@ -59,6 +59,7 @@ npm-debug.log*
 # Documentation and design files
 uiuxdesign
 vrf2.5.tx
+duiuxdesign
 
 # Mock contracts
 contracts/mocks/VRFCoordinatorV2_5Mock.sol
