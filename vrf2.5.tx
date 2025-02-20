@@ -1,0 +1,108 @@
+VRF V2.5 replaces both VRF V1 and VRF V2 on November 29, 2024.
+
+To modify your existing smart contract code to work with VRF v2.5, complete the following changes:
+
+Subscription
+Import the VRFConsumerBaseV2Plus contract and remove the v2 VRFConsumerBaseV2 import.
+
+Import the VRF v2.5 coordinator, VRFCoordinatorV2_5, and update any old references to the VRF V2 coordinator in your contract.
+
+Add a VRFConsumerBaseV2Plus constructor, passing in the VRF coordinator address for the network you're using.
+
+Update your requestRandomWords function calls to reflect the new request structure for VRF v2.5. Make sure to include the new extraArgs part of the VRFV2PlusClient.RandomWordsRequest object, and specify whether or not you want to pay for VRF requests using native tokens:
+
+uint256 requestId = s_vrfCoordinator.requestRandomWords(
+    VRFV2PlusClient.RandomWordsRequest({
+        keyHash: keyHash,
+        subId: s_vrfSubscriptionId,
+        requestConfirmations: requestConfirmations,
+        callbackGasLimit: callbackGasLimit,
+        numWords: numWords,
+        extraArgs: VRFV2PlusClient._argsToBytes(VRFV2PlusClient.ExtraArgsV1({nativePayment: false}))
+    })
+);
+
+
+When using the @chainlink/contracts package version 1.1.1 and later, update your fulfillRandomWords function signature to match the VRFConsumerBaseV2Plus contract, which has changed to:
+function fulfillRandomWords(uint256 requestId, uint256[] calldata randomWords)
+
+In the @chainlink/contracts package version 1.1.0 and earlier, the randomWords parameter has a memory storage location.
+
+
+Compare example code
+Subscription example code
+The example SubscriptionConsumer contract shows the migration steps above, applied to the example code from this VRF V2 tutorial. Both of these examples use the subscription method
+
+
+// SPDX-License-Identifier: MIT
+// An example of a consumer contract that relies on a subscription for funding.
+pragma solidity 0.8.19;
+
+///// UPDATE IMPORTS TO V2.5 /////
+import {VRFConsumerBaseV2Plus} from "@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
+import {VRFV2PlusClient} from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
+
+...
+
+/\*\*
+
+- THIS IS AN EXAMPLE CONTRACT THAT USES HARDCODED VALUES FOR CLARITY.
+- THIS IS AN EXAMPLE CONTRACT THAT USES UN-AUDITED CODE.
+- DO NOT USE THIS CODE IN PRODUCTION.
+  \*/
+
+///// INHERIT NEW CONSUMER BASE CONTRACT /////
+contract SubscriptionConsumer is VRFConsumerBaseV2Plus {
+...
+    ///// No need to declare a coordinator variable /////
+    ///// Use the `s_vrfCoordinator` from VRFConsumerBaseV2Plus.sol /////
+
+    ///// SUBSCRIPTION ID IS NOW UINT256 /////
+    uint256 s_subscriptionId;
+
+    ...
+
+    ///// USE NEW KEYHASH FOR VRF 2.5 GAS LANE /////
+    // For a list of available gas lanes on each network,
+    // see https://docs.chain.link/docs/vrf/v2-5/supported-networks
+    bytes32 keyHash =
+        0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae;
+
+    ...
+
+    ///// USE NEW CONSUMER BASE CONSTRUCTOR /////
+    constructor(
+        ///// UPDATE TO UINT256 /////
+        uint256 subscriptionId
+    )
+        VRFConsumerBaseV2Plus(0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B)
+    {
+        s_subscriptionId = subscriptionId;
+    }
+
+    function requestRandomWords()
+        external
+        onlyOwner
+        returns (uint256 requestId)
+    {
+        ///// UPDATE TO NEW V2.5 REQUEST FORMAT /////
+        // To enable payment in native tokens, set nativePayment to true.
+        // Use the `s_vrfCoordinator` from VRFConsumerBaseV2Plus.sol
+        requestId = s_vrfCoordinator.requestRandomWords(
+            VRFV2PlusClient.RandomWordsRequest({
+                keyHash: keyHash,
+                subId: s_subscriptionId,
+                requestConfirmations: requestConfirmations,
+                callbackGasLimit: callbackGasLimit,
+                numWords: numWords,
+                extraArgs: VRFV2PlusClient._argsToBytes(
+                    VRFV2PlusClient.ExtraArgsV1({nativePayment: false})
+                )
+            })
+        );
+        ...
+    }
+    ...
+
+}
+

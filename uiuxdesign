@@ -1,0 +1,165 @@
+# Degen Dream Frontend Development Plan - Next.js Version
+
+## Epic 1: Next.js Project Setup (Sprint 1)
+
+### User Stories
+1. As a developer, I need a Next.js 14 project with app router
+2. As a developer, I need Web3 integration capabilities
+3. As a developer, I need a responsive layout framework
+4. As a developer, I need a sound management system
+
+### Technical Requirements
+- Initialize Next.js 14 project with app router
+- Set up project structure:
+```
+app/
+├── (auth)/
+│   └── connect/
+├── (game)/
+│   ├── play/
+│   └── leaderboard/
+├── components/
+│   ├── ui/
+│   ├── game/
+│   └── web3/
+├── lib/
+│   ├── web3/
+│   ├── sounds/
+│   └── animations/
+└── api/
+    └── route.ts
+```
+- Configure TailwindCSS
+- Implement Web3 provider with wagmi/viem
+- Set up sound manager (client component)
+- Configure environment variables
+- Set up API routes for game logic
+
+### Acceptance Criteria
+- Next.js dev server runs successfully
+- App router navigation works
+- Web3 connection functions
+- Project structure follows Next.js best practices
+
+## Epic 2: Core UI Components (Sprint 2)
+
+### User Stories
+1. As a user, I need to see the main hero section with animations
+2. As a user, I need a functional navigation bar
+3. As a user, I need to connect my wallet
+4. As a user, I need to control sound settings
+
+### Technical Requirements
+- Create layout.tsx with navigation
+- Build hero section as server component
+- Implement client-side animations
+- Create wallet connection modal (client component)
+- Add sound controls (client component)
+- Implement dark theme with matrix animation
+
+### Acceptance Criteria
+- Server-side rendering works correctly
+- Client hydration is smooth
+- Navigation is responsive
+- Wallet connects properly
+- Animations don't impact Core Web Vitals
+
+## Epic 3: Game Interface (Sprint 3)
+
+### User Stories
+1. As a user, I need to see the number grid
+2. As a user, I need to select numbers
+3. As a user, I need to place bets
+4. As a user, I need to see my balance
+
+### Technical Requirements
+- Create game components:
+```typescript
+// app/(game)/play/page.tsx
+// app/components/game/NumberGrid.tsx
+// app/components/game/BettingInterface.tsx
+// app/components/game/Balance.tsx
+```
+- Implement game logic with server actions
+- Set up real-time updates with Next.js Server Components
+- Create betting interface as client component
+- Add balance display with automatic updates
+
+### Acceptance Criteria
+- Numbers selection works smoothly
+- Betting interface is responsive
+- Server actions handle bets correctly
+- Balance updates in real-time
+
+## Epic 4: Live Features (Sprint 4)
+
+### User Stories
+1. As a user, I need to see recent winners
+2. As a user, I need to view latest bets
+3. As a user, I need to see biggest wins
+4. As a user, I need real-time updates
+
+### Technical Requirements
+- Implement Pusher/Socket.io for real-time features
+- Create API routes for live data
+- Build leaderboard with server components
+- Add real-time counters as client components
+- Optimize data fetching with Next.js caching
+
+### Acceptance Criteria
+- Real-time updates work efficiently
+- Server-side rendering shows initial state
+- Client-side updates are smooth
+- Caching works correctly
+
+## Epic 5: Effects and Polish (Sprint 5)
+
+### User Stories
+1. As a user, I need visual feedback when interacting
+2. As a user, I need to see winning animations
+3. As a user, I need to preview the NFT gallery
+4. As a user, I need a polished mobile experience
+
+### Technical Requirements
+- Add Framer Motion animations
+- Implement sound effects system
+- Create NFT preview page
+- Optimize images with next/image
+- Add loading UI with Suspense
+- Implement error boundaries
+
+### Acceptance Criteria
+- Animations are smooth
+- Images are optimized
+- Loading states work correctly
+- Error handling is comprehensive
+
+## Technical Stack
+- Framework: Next.js 14 with App Router
+- Styling: TailwindCSS
+- Web3: wagmi + viem
+- Animations: Framer Motion
+- UI Components: shadcn/ui
+- State Management: Zustand
+- Real-time: Pusher/Socket.io
+- Sound: Howler.js
+
+## Next.js Specific Guidelines
+1. Use Server Components by default
+2. Convert to Client Components only when needed
+3. Implement proper loading UI and error boundaries
+4. Utilize Next.js image optimization
+5. Follow Route Groups organization
+6. Use Server Actions for forms
+7. Implement proper metadata
+8. Use route handlers for API endpoints
+
+## Definition of Done
+- Passes Lighthouse performance audit
+- Core Web Vitals optimized
+- SSR working correctly
+- Client hydration smooth
+- Mobile responsive
+- Cross-browser compatible
+- TypeScript types complete
+- Error boundaries implemented
