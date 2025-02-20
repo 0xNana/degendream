@@ -63,3 +63,6 @@ duiuxdesign
 
 # Mock contracts
 contracts/mocks/VRFCoordinatorV2_5Mock.sol
+
+# Local Netlify folder
+.netlify

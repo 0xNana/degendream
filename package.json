@@ -9,7 +9,8 @@
     "deploy": "hardhat run scripts/deploy.js",
     "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
     "build": "next build",
-    "export": "next export"
+    "export": "next export",
+    "download-sounds": "bash scripts/download-sounds.sh"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -28,6 +29,8 @@
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4",
     "typescript": "^5.0.2",
-    "vite": "^4.3.2"
+    "vite": "^4.3.2",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.11.16"
   }
 }
