@@ -20,10 +20,11 @@ module.exports = {
   },
   networks: {
     hardhat: {
-      chainId: 31337
+      chainId: 31337,
+      url: "https://eth-sepolia.g.alchemy.com/v2/hQfI7k6KfafWc8o0M69aMDPez3crZbDg",
     },
     sepolia: {
-      url: "https://eth-sepolia.g.alchemy.com/v2/hQfI7k6KfafWc8o0M69aMDPez3crZbDg",
+      url: "https://sepolia.infura.io/v3/ec895f4e045048f0a69a7fad7968b439",
       accounts: process.env.SEPOLIA_PRIVATE_KEY ? [process.env.SEPOLIA_PRIVATE_KEY] : [],
       chainId: 11155111,
       gasPrice: 26000000000, // 26 gwei
