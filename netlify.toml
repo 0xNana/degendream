@@ -8,6 +8,8 @@
 
 [build.environment]
   NEXT_USE_NETLIFY_EDGE = "true"
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps --force"
   NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID = "4c3d42155c8f2059a1199df5e39a4832"
   NEXT_PUBLIC_DEGEN_DREAM_ADDRESS = "0x3D363bF3c2AB192E976004feacB5877fE636E272"
   NEXT_PUBLIC_ALCHEMY_API_KEY = "ec895f4e045048f0a69a7fad7968b439"
@@ -15,8 +17,40 @@
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/200.html"
   status = 200
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Cache settings
+[build.cache]
+  node_version = "18"
+
+# Clear cache on deploy
+[[plugins]]
+  package = "netlify-plugin-cache-money"
+
+[plugins.inputs]
+  # Directories to cache
+  paths = [
+    "frontend/node_modules",
+    "frontend/.next/cache"
+  ]
 
 [functions]
   node_bundler = "esbuild"
