@@ -32,7 +32,10 @@ const nextConfig = {
   poweredByHeader: false,
   generateBuildId: async () => {
     return 'build-' + Date.now()
-  }
+  },
+  // Disable static exports
+  trailingSlash: false,
+  distDir: '.next'
 }
 
 module.exports = nextConfig 
