@@ -3,16 +3,16 @@
   command = "npm install && npm run build"
   publish = ".next"
 
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
 [build.environment]
   NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID = "4c3d42155c8f2059a1199df5e39a4832"
   NEXT_PUBLIC_DEGEN_DREAM_ADDRESS = "0x3D363bF3c2AB192E976004feacB5877fE636E272"
   NEXT_PUBLIC_SEPOLIA_RPC_URL = "https://eth-sepolia.g.alchemy.com/v2/hQfI7k6KfafWc8o0M69aMDPez3crZbDg"
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_VERSION = "18"
-  NPM_FLAGS = "--legacy-peer-deps"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+  NPM_FLAGS = "--no-audit --no-fund"
 
 [functions]
   included_files = [".next/standalone/**"]
@@ -53,18 +53,6 @@
 # Cache settings
 [build.cache]
   node_version = "18"
-
-# Clear cache on deploy
-[[plugins]]
-  package = "netlify-plugin-cache-money"
-
-[plugins.inputs]
-  # Directories to cache
-  paths = [
-    "node_modules",
-    ".next/cache",
-    "src/.next/cache"
-  ]
 
 [dev]
   framework = "next"
