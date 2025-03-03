@@ -1,6 +1,17 @@
 {
   "extends": "next/core-web-vitals",
+  "plugins": ["@next/next"],
   "rules": {
-    "@next/next/no-duplicate-head": "off"
+    "@next/next/no-duplicate-head": "off",
+    "@next/next/no-page-custom-font": "off"
+  },
+  "settings": {
+    "next": {
+      "rootDir": "."
+    }
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020
   }
 } 
