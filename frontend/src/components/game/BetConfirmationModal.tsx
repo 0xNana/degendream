@@ -47,18 +47,18 @@ export function BetConfirmationModal({
           <div className="space-y-1">
             <h3 className="text-sm font-medium">Bet Amount</h3>
             <p className="text-2xl font-bold text-primary">
-              {betAmount} DREAM
+              {betAmount} DD
             </p>
           </div>
 
           <div className="space-y-1">
             <h3 className="text-sm font-medium">Potential Winnings</h3>
             <div className="space-y-1 text-sm">
-              <p>6 matches: {Number(betAmount) * 100} DREAM</p>
-              <p>5 matches: {Number(betAmount) * 50} DREAM</p>
-              <p>4 matches: {Number(betAmount) * 20} DREAM</p>
-              <p>3 matches: {Number(betAmount) * 10} DREAM</p>
-              <p>2 matches: {Number(betAmount) * 5} DREAM</p>
+              <p>6 matches: {Number(betAmount) * 100} DD</p>
+              <p>5 matches: {Number(betAmount) * 50} DD</p>
+              <p>4 matches: {Number(betAmount) * 20} DD</p>
+              <p>3 matches: {Number(betAmount) * 10} DD</p>
+              <p>2 matches: {Number(betAmount) * 5} DD</p>
             </div>
           </div>
         </div>
