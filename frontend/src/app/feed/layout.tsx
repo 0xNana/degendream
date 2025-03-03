@@ -9,4 +9,12 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
+}
+
+export default function FeedLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return children
 } 
