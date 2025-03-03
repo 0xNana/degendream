@@ -35,7 +35,9 @@ const nextConfig = {
   },
   // Disable static exports
   trailingSlash: false,
-  distDir: '.next'
+  distDir: '.next',
+  // Add Netlify specific settings
+  target: 'server'
 }
 
 module.exports = nextConfig 
