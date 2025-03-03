@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast'
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { Providers } from './providers'
 import { registerServiceWorker } from './pwa'
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,12 +16,6 @@ export const metadata: Metadata = {
   description: 'Decentralized Lottery Game on Ethereum',
   manifest: '/manifest.json',
   themeColor: '#000000',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -52,6 +46,13 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-status-bar-style': 'default',
     'msapplication-starturl': '/',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
