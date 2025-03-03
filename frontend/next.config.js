@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
   // Configure source directory
   webpack: (config) => {
@@ -23,6 +28,11 @@ const nextConfig = {
   },
   // Enable gzip compression
   compress: true,
+  output: 'standalone',
+  poweredByHeader: false,
+  generateBuildId: async () => {
+    return 'build-' + Date.now()
+  }
 }
 
 module.exports = nextConfig 

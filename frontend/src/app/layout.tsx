@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   title: 'DegenDream',
   description: 'Decentralized Lottery Game on Ethereum',
   manifest: '/manifest.json',
-  themeColor: '#000000',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -41,7 +40,6 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-capable': 'yes',
     'application-name': 'DegenDream',
     'apple-mobile-web-app-title': 'DegenDream',
-    'theme-color': '#000000',
     'msapplication-navbutton-color': '#000000',
     'apple-mobile-web-app-status-bar-style': 'default',
     'msapplication-starturl': '/',
@@ -53,6 +51,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: '#000000',
 }
 
 export default function RootLayout({
