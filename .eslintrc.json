@@ -1,6 +1,6 @@
 {
   "extends": "next/core-web-vitals",
-  "plugins": ["@next/next"],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "@next/next/no-duplicate-head": "off",
     "@next/next/no-page-custom-font": "off"
