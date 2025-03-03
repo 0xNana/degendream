@@ -526,7 +526,6 @@ export function useDegenDream() {
         
         setStatus('idle')
       }
-
     } catch (error: any) {
       console.error('Betting error:', error)
       // Only show specific error messages
